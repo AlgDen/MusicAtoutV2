@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d9d9d6e96e7c4a7d9ba023099c6c373c" Name="Diagram1">
+        <EntityTypeShape EntityType="mdlMusicAtout.BATIMENT" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="mdlMusicAtout.SALLE" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="mdlMusicAtout.TYPEOEUVRE" Width="1.5" PointX="7.5" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="mdlMusicAtout.VILLE" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <AssociationConnector Association="mdlMusicAtout.FK_BATIMENT_VILLE" ManuallyRouted="false" />
+        <AssociationConnector Association="mdlMusicAtout.FK_SALLE_BATIMENT" ManuallyRouted="false" />
+        <AssociationConnector Association="mdlMusicAtout.ACCUEILLIR" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="mdlMusicAtout.COMPOSITEUR" Width="1.5" PointX="5.75" PointY="4.5" />
+        <EntityTypeShape EntityType="mdlMusicAtout.NATIONALITE" Width="1.5" PointX="3" PointY="5.625" />
+        <EntityTypeShape EntityType="mdlMusicAtout.OEUVRE" Width="1.5" PointX="8.625" PointY="4" />
+        <EntityTypeShape EntityType="mdlMusicAtout.STYLE" Width="1.5" PointX="0.5" PointY="4.125" />
+        <AssociationConnector Association="mdlMusicAtout.FK_COMPOSITEUR_NATIONALITE" />
+        <AssociationConnector Association="mdlMusicAtout.FK_COMPOSITEUR_STYLE" />
+        <AssociationConnector Association="mdlMusicAtout.FK_OEUVRE_COMPOSITEUR" />
+        <AssociationConnector Association="mdlMusicAtout.FK_OEUVRE_TYPE" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
