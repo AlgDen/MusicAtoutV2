@@ -49,6 +49,7 @@ namespace WindowsFormsApp1
             dgvCompositeur.Columns[3].HeaderText = "Né le";
             dgvCompositeur.Columns[4].HeaderText = "Mort le";
             dgvCompositeur.Columns[5].HeaderText = "Informations";
+            dgvCompositeur.Columns[6].Visible = false;
         }
 
         private void DgvCompositeur_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -64,6 +65,28 @@ namespace WindowsFormsApp1
         private void BtnToutesNationalite_Click(object sender, EventArgs e)
         {
             bsCompositeur.DataSource = Modele.Compositeurs();
+        }
+
+        private void btnAjout_Click(object sender, EventArgs e)
+        {
+            FAjoutModifCompositeur form = new FAjoutModifCompositeur();
+            form.Show();
+            Modele.ActionGestionCompositeur = 1;
+        }
+
+        private void btnModif_Click(object sender, EventArgs e)
+        {
+            FAjoutModifCompositeur form = new FAjoutModifCompositeur();
+            form.Show();
+            Modele.ActionGestionCompositeur = 2;
+            findCompositeurID();
+        }
+
+        private int findCompositeurID()
+        {
+            System.Type type = bsCompositeur.Current.GetType();
+            int id = (int)type.GetProperty("idCompositeur").GetValue(bsCompositeur.Current, null);
+            return id;
         }
     }
 }

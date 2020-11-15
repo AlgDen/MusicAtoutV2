@@ -40,6 +40,7 @@
             this.parStyleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.parOeuvresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.gestionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -62,7 +63,8 @@
             this.salleToolStripMenuItem,
             this.batimentToolStripMenuItem,
             this.typeOeuvreToolStripMenuItem,
-            this.compositeursToolStripMenuItem});
+            this.compositeursToolStripMenuItem,
+            this.gestionToolStripMenuItem});
             this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
             this.menuToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
             this.menuToolStripMenuItem.Text = "Liste";
@@ -109,21 +111,21 @@
             // parNationalitéToolStripMenuItem
             // 
             this.parNationalitéToolStripMenuItem.Name = "parNationalitéToolStripMenuItem";
-            this.parNationalitéToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.parNationalitéToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.parNationalitéToolStripMenuItem.Text = "Par nationalité";
             this.parNationalitéToolStripMenuItem.Click += new System.EventHandler(this.ParNationalitéToolStripMenuItem_Click);
             // 
             // parStyleToolStripMenuItem
             // 
             this.parStyleToolStripMenuItem.Name = "parStyleToolStripMenuItem";
-            this.parStyleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.parStyleToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.parStyleToolStripMenuItem.Text = "Par style ";
             this.parStyleToolStripMenuItem.Click += new System.EventHandler(this.ParStyleToolStripMenuItem_Click);
             // 
             // parOeuvresToolStripMenuItem
             // 
             this.parOeuvresToolStripMenuItem.Name = "parOeuvresToolStripMenuItem";
-            this.parOeuvresToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.parOeuvresToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.parOeuvresToolStripMenuItem.Text = "Par oeuvres";
             this.parOeuvresToolStripMenuItem.Click += new System.EventHandler(this.ParOeuvresToolStripMenuItem_Click);
             // 
@@ -139,6 +141,12 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
+            // 
+            // gestionToolStripMenuItem
+            // 
+            this.gestionToolStripMenuItem.Name = "gestionToolStripMenuItem";
+            this.gestionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.gestionToolStripMenuItem.Text = "Gestion";
             // 
             // FMenu
             // 
@@ -171,6 +179,7 @@
         private System.Windows.Forms.ToolStripMenuItem parNationalitéToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem parStyleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem parOeuvresToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gestionToolStripMenuItem;
     }
 }
 

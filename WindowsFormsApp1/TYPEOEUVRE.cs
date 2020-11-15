@@ -17,16 +17,16 @@ namespace WindowsFormsApp1
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TYPEOEUVRE()
         {
-            this.SALLE = new HashSet<SALLE>();
             this.OEUVRE = new HashSet<OEUVRE>();
+            this.SALLE = new HashSet<SALLE>();
         }
     
         public int idType { get; set; }
         public string libelleType { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SALLE> SALLE { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OEUVRE> OEUVRE { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SALLE> SALLE { get; set; }
     }
 }

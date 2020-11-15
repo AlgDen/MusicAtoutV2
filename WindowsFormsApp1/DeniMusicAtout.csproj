@@ -63,6 +63,12 @@
     <Compile Include="COMPOSITEUR.cs">
       <DependentUpon>mdlMusicAtoutV1.tt</DependentUpon>
     </Compile>
+    <Compile Include="FAjoutModifCompositeur.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FAjoutModifCompositeur.Designer.cs">
+      <DependentUpon>FAjoutModifCompositeur.cs</DependentUpon>
+    </Compile>
     <Compile Include="FBat.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -144,9 +150,15 @@
     <Compile Include="TYPEOEUVRE.cs">
       <DependentUpon>mdlMusicAtoutV1.tt</DependentUpon>
     </Compile>
+    <Compile Include="UTILISATEUR.cs">
+      <DependentUpon>mdlMusicAtoutV1.tt</DependentUpon>
+    </Compile>
     <Compile Include="VILLE.cs">
       <DependentUpon>mdlMusicAtoutV1.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FAjoutModifCompositeur.resx">
+      <DependentUpon>FAjoutModifCompositeur.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FBat.resx">
       <DependentUpon>FBat.cs</DependentUpon>
     </EmbeddedResource>
