@@ -348,3 +348,13 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+/WindowsFormsApp1/mdlMusicAtout.Designer.cs
+/WindowsFormsApp1/mdlMusicAtout.edmx
+/WindowsFormsApp1/mdlMusicAtout.edmx.diagram
+/WindowsFormsApp1/mdmMusicAtoutV1.Context.cs
+/WindowsFormsApp1/mdmMusicAtoutV1.Context.tt
+/WindowsFormsApp1/mdmMusicAtoutV1.cs
+/WindowsFormsApp1/mdmMusicAtoutV1.Designer.cs
+/WindowsFormsApp1/mdmMusicAtoutV1.edmx
+/WindowsFormsApp1/mdmMusicAtoutV1.edmx.diagram
+/WindowsFormsApp1/mdmMusicAtoutV1.tt

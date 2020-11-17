@@ -32,7 +32,6 @@ namespace WindowsFormsApp1
         public virtual DbSet<SALLE> SALLE { get; set; }
         public virtual DbSet<STYLE> STYLE { get; set; }
         public virtual DbSet<TYPEOEUVRE> TYPEOEUVRE { get; set; }
-        public virtual DbSet<UTILISATEUR> UTILISATEUR { get; set; }
         public virtual DbSet<VILLE> VILLE { get; set; }
     }
 }
