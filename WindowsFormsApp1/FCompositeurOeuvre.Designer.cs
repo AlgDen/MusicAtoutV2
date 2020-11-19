@@ -267,9 +267,6 @@
             this.dgvCompositeurDroite.Size = new System.Drawing.Size(382, 207);
             this.dgvCompositeurDroite.TabIndex = 11;
             // 
-            // bsDroite
-            // 
-            // 
             // FCompositeurOeuvre
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);

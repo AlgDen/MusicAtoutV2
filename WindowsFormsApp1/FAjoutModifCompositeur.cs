@@ -54,11 +54,19 @@ namespace WindowsFormsApp1
             string prenom = txtPrenom.Text;
             string remarque = txtRemarque.Text;
             int annee_nais = int.Parse(txtAnNais.Text);
-            int annee_mort = int.Parse(txtAnMort.Text);
-            int idNation = int.Parse(cboNation.Text);
-            int idStyle = int.Parse(cboStyle.Text);
+            int annee_mort = 0;
+            if (!string.IsNullOrEmpty(txtAnMort.Text))
+            {
+                annee_mort = int.Parse(txtAnMort.Text);
+            }
+            int idNation = int.Parse(cboNation.SelectedValue.ToString());
+            int idStyle = int.Parse(cboStyle.SelectedValue.ToString());
 
-            Modele.AjoutCompositeur(nom, prenom, remarque, annee_nais, annee_mort, idNation, idStyle);
+            if(Modele.AjoutCompositeur(nom, prenom, remarque, annee_nais, annee_mort, idNation, idStyle))
+            {
+                MessageBox.Show("Compositeur ajouté avec succès", "Ajout", MessageBoxButtons.OK);
+                Form.ActiveForm.Close();
+            }
         }
 
         private bool TestRempli(out string erreur)
@@ -66,28 +74,54 @@ namespace WindowsFormsApp1
             bool vretour = true;
             var mydate = DateTime.Now;
             int annee_actuelle = mydate.Year;
-            
+            int annee_sub15 = annee_actuelle - 15;
+            int annee_add15 = annee_actuelle + 15;
+            int annee_add125 = annee_actuelle + 125;
+
             erreur = "Erreur de saisie :\n";
 
-            if(string.IsNullOrEmpty(txtNom.Text))
+            try
+            {
+                int.Parse(txtAnNais.Text);
+            }
+            catch(Exception e)
+            {
+                erreur += "\u25C9\tLa date de naissance doit être un entier\n";
+                vretour = false;
+            }
+
+            try
+            {
+                if(!string.IsNullOrEmpty(txtAnMort.Text))
+                {
+                    int.Parse(txtAnMort.Text);
+                }
+            }
+            catch (Exception e)
+            {
+                erreur += "\u25C9\tLa date de mort doit être un entier\n";
+                vretour = false;
+            }
+
+            if (txtNom.Text == "")
             {
                 erreur += "\u25C9\tNom Compositeur vide\n";
                 vretour = false;
             }
 
-            if(string.IsNullOrEmpty(txtPrenom.Text))
+            if(txtPrenom.Text == "")
             {
                 erreur += "\u25C9\tPrénom Compositeur vide\n";
                 vretour = false;
             }
 
-            if(string.IsNullOrEmpty(txtRemarque.Text))
+            if(txtRemarque.Text == "")
             {
                 erreur += "\u25C9\tRemarque Compositeur vide\n";
                 vretour = false;
             }
 
-            if(string.IsNullOrEmpty(txtAnNais.Text))
+            if(txtAnNais.Text == "")
             {
                 erreur += "\u25C9\tAnnée naissance Compositeur vide\n";
                 vretour = false;
@@ -102,44 +136,37 @@ namespace WindowsFormsApp1
                         vretour = false;
                     }
 
-                    if (DateTime.Parse(txtAnNais.Text) > mydate.AddYears(-15))
+                    if (int.Parse(txtAnNais.Text) > annee_sub15)
                     {
                         erreur += "\u25C9\tAnnée naissance Compositeur incompatible\n";
                         vretour = false;
                     }
                 }
-                catch (Exception e)
+                catch(Exception e)
                 {
-                    MessageBox.Show("Erreur de format de date", "ATTENTION !", MessageBoxButtons.OK);
+
                 }
             }
 
 
-            if (string.IsNullOrEmpty(txtAnMort.Text) == false)
+            if ((txtAnMort.Text == "") == false)
             {
-                try
+                if (DateTime.Parse(txtAnMort.Text) < DateTime.Parse(txtAnNais.Text).AddYears(15))
                 {
-                    if (DateTime.Parse(txtAnMort.Text) < DateTime.Parse(txtAnNais.Text).AddYears(15))
-                    {
-                        erreur += "\u25C9\tAnnée mort Compositeur incompatible\n";
-                        vretour = false;
-                    }
-
-                    if (DateTime.Parse(txtAnMort.Text) > DateTime.Parse(txtAnNais.Text).AddYears(125))
-                    {
-                        erreur += "\u25C9\tAnnée mort Compositeur incompatible\n";
-                        vretour = false;
-                    }
-
-                    if (int.Parse(txtAnMort.Text) > annee_actuelle)
-                    {
-                        erreur += "\u25C9\tAnnée mort Compositeur incompatible\n";
-                        vretour = false;
-                    }
+                    erreur += "\u25C9\tAnnée mort Compositeur incompatible\n";
+                    vretour = false;
                 }
-                catch (Exception e)
+
+                if (DateTime.Parse(txtAnMort.Text) > DateTime.Parse(txtAnNais.Text).AddYears(125))
                 {
-                    MessageBox.Show("Erreur de format de date", "ATTENTION !", MessageBoxButtons.OK);
+                    erreur += "\u25C9\tAnnée mort Compositeur incompatible\n";
+                    vretour = false;
+                }
+
+                if (int.Parse(txtAnMort.Text) > annee_actuelle)
+                {
+                    erreur += "\u25C9\tAnnée mort Compositeur incompatible\n";
+                    vretour = false;
                 }
             }
 
