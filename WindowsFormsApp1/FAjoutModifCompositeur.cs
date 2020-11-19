@@ -94,39 +94,52 @@ namespace WindowsFormsApp1
             }
             else
             {
-
-                if (int.Parse(txtAnNais.Text) < 500)
+                try
                 {
-                    erreur += "\u25C9\tAnnée naissance Compositeur incompatible\n";
-                    vretour = false;
+                    if (int.Parse(txtAnNais.Text) < 500)
+                    {
+                        erreur += "\u25C9\tAnnée naissance Compositeur incompatible\n";
+                        vretour = false;
+                    }
+
+                    if (DateTime.Parse(txtAnNais.Text) > mydate.AddYears(-15))
+                    {
+                        erreur += "\u25C9\tAnnée naissance Compositeur incompatible\n";
+                        vretour = false;
+                    }
                 }
-
-                if (DateTime.Parse(txtAnNais.Text) > mydate.AddYears(-15))
+                catch (Exception e)
                 {
-                    erreur += "\u25C9\tAnnée naissance Compositeur incompatible\n";
-                    vretour = false;
+                    MessageBox.Show("Erreur de format de date", "ATTENTION !", MessageBoxButtons.OK);
                 }
             }
 
 
             if (string.IsNullOrEmpty(txtAnMort.Text) == false)
             {
-                if (DateTime.Parse(txtAnMort.Text) < DateTime.Parse(txtAnNais.Text).AddYears(15))
+                try
                 {
-                    erreur += "\u25C9\tAnnée mort Compositeur incompatible\n";
-                    vretour = false;
-                }
+                    if (DateTime.Parse(txtAnMort.Text) < DateTime.Parse(txtAnNais.Text).AddYears(15))
+                    {
+                        erreur += "\u25C9\tAnnée mort Compositeur incompatible\n";
+                        vretour = false;
+                    }
 
-                if (DateTime.Parse(txtAnMort.Text) > DateTime.Parse(txtAnNais.Text).AddYears(125))
-                {
-                    erreur += "\u25C9\tAnnée mort Compositeur incompatible\n";
-                    vretour = false;
-                }
+                    if (DateTime.Parse(txtAnMort.Text) > DateTime.Parse(txtAnNais.Text).AddYears(125))
+                    {
+                        erreur += "\u25C9\tAnnée mort Compositeur incompatible\n";
+                        vretour = false;
+                    }
 
-                if (int.Parse(txtAnMort.Text) > annee_actuelle)
+                    if (int.Parse(txtAnMort.Text) > annee_actuelle)
+                    {
+                        erreur += "\u25C9\tAnnée mort Compositeur incompatible\n";
+                        vretour = false;
+                    }
+                }
+                catch (Exception e)
                 {
-                    erreur += "\u25C9\tAnnée mort Compositeur incompatible\n";
-                    vretour = false;
+                    MessageBox.Show("Erreur de format de date", "ATTENTION !", MessageBoxButtons.OK);
                 }
             }
 

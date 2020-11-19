@@ -78,7 +78,7 @@ namespace WindowsFormsApp1
                 maConnexion.COMPOSITEUR.Add(compositeurChoisi);
                 maConnexion.SaveChanges();
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
                 vretour = false;
             }
