@@ -216,6 +216,7 @@
             this.Name = "FAjoutModifCompositeur";
             this.Text = "FAjoutModifCompositeur";
             this.Load += new System.EventHandler(this.FAjoutModifCompositeur_Load);
+            this.Shown += new System.EventHandler(this.FAjoutModifCompositeur_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.bsStyle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsNationalite)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsCompositeur)).EndInit();

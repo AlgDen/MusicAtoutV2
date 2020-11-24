@@ -37,6 +37,7 @@
             this.btnToutesNationalite = new System.Windows.Forms.Button();
             this.btnAjout = new System.Windows.Forms.Button();
             this.btnModif = new System.Windows.Forms.Button();
+            this.btnSup = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCompositeur)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsNation)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsCompositeur)).BeginInit();
@@ -104,11 +105,22 @@
             this.btnModif.UseVisualStyleBackColor = true;
             this.btnModif.Click += new System.EventHandler(this.btnModif_Click);
             // 
+            // btnSup
+            // 
+            this.btnSup.Location = new System.Drawing.Point(222, 402);
+            this.btnSup.Name = "btnSup";
+            this.btnSup.Size = new System.Drawing.Size(75, 23);
+            this.btnSup.TabIndex = 9;
+            this.btnSup.Text = "Suppression";
+            this.btnSup.UseVisualStyleBackColor = true;
+            this.btnSup.Click += new System.EventHandler(this.btnSup_Click);
+            // 
             // FCompositeurNation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnSup);
             this.Controls.Add(this.btnModif);
             this.Controls.Add(this.btnAjout);
             this.Controls.Add(this.btnToutesNationalite);
@@ -136,5 +148,6 @@
         private System.Windows.Forms.Button btnToutesNationalite;
         private System.Windows.Forms.Button btnAjout;
         private System.Windows.Forms.Button btnModif;
+        private System.Windows.Forms.Button btnSup;
     }
 }

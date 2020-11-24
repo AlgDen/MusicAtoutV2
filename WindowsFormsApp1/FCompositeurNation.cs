@@ -77,9 +77,13 @@ namespace WindowsFormsApp1
         private void btnModif_Click(object sender, EventArgs e)
         {
             FAjoutModifCompositeur form = new FAjoutModifCompositeur();
-            form.Show();
             Modele.ActionGestionCompositeur = 2;
-            findCompositeurID();
+
+            //récupérer le compositeur sélectionné
+            int idCompositeur = findCompositeurID();
+            Modele.CompositeurChoisi = (COMPOSITEUR)Modele.CompositeurParID(idCompositeur);
+
+            form.Show();
         }
 
         private int findCompositeurID()
@@ -87,6 +91,28 @@ namespace WindowsFormsApp1
             System.Type type = bsCompositeur.Current.GetType();
             int id = (int)type.GetProperty("idCompositeur").GetValue(bsCompositeur.Current, null);
             return id;
+        }
+
+        private void btnSup_Click(object sender, EventArgs e)
+        {
+            int idCompositeur = findCompositeurID();
+            Modele.CompositeurChoisi = (COMPOSITEUR)Modele.CompositeurParID(idCompositeur);
+
+            if (MessageBox.Show("Etes vous sur de vouloir supprimer le compositeur :" +
+                Modele.CompositeurChoisi.prenomCompositeur.Trim() + " - " + Modele.CompositeurChoisi.nomCompositeur.Trim(),
+                "Suppression", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                if (Modele.SuppCompositeur()) 
+                {
+                    MessageBox.Show("Le compositeur a été retiré.", "Suppression", MessageBoxButtons.OK);
+                    cboNation_SelectedIndexChanged(cboNation.SelectedValue, e);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Aucun compositeur retiré.", "Suppression", MessageBoxButtons.OK);
+            }
+
         }
     }
 }

@@ -93,6 +93,12 @@
     <Compile Include="FCompositeurStyle.Designer.cs">
       <DependentUpon>FCompositeurStyle.cs</DependentUpon>
     </Compile>
+    <Compile Include="FConnex.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FConnex.Designer.cs">
+      <DependentUpon>FConnex.cs</DependentUpon>
+    </Compile>
     <Compile Include="FMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -170,6 +176,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FCompositeurStyle.resx">
       <DependentUpon>FCompositeurStyle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FConnex.resx">
+      <DependentUpon>FConnex.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FMenu.resx">
       <DependentUpon>FMenu.cs</DependentUpon>

@@ -43,13 +43,14 @@ namespace WindowsFormsApp1
 
         private void btnValider_Click(object sender, EventArgs e)
         {
+
             string erreur = "";
             if (TestRempli(out erreur) == false)
             {
                 MessageBox.Show(erreur, "ATTENTION !", MessageBoxButtons.OK);
                 return;
             }
-
+            
             string nom = txtNom.Text;
             string prenom = txtPrenom.Text;
             string remarque = txtRemarque.Text;
@@ -62,10 +63,21 @@ namespace WindowsFormsApp1
             int idNation = int.Parse(cboNation.SelectedValue.ToString());
             int idStyle = int.Parse(cboStyle.SelectedValue.ToString());
 
-            if(Modele.AjoutCompositeur(nom, prenom, remarque, annee_nais, annee_mort, idNation, idStyle))
+            if (Modele.ActionGestionCompositeur == 1)
             {
-                MessageBox.Show("Compositeur ajouté avec succès", "Ajout", MessageBoxButtons.OK);
-                Form.ActiveForm.Close();
+                if (Modele.AjoutCompositeur(nom, prenom, remarque, annee_nais, annee_mort, idNation, idStyle))
+                {
+                    MessageBox.Show("Compositeur ajouté avec succès.", "Ajout", MessageBoxButtons.OK);
+                    Form.ActiveForm.Close();
+                }
+            }
+            else
+            {
+                if (Modele.ModifCompositeur(nom,prenom,remarque,annee_nais,annee_mort,idNation,idStyle))
+                {
+                    MessageBox.Show("Les modifications ont été enregistrées.", "Modification", MessageBoxButtons.OK);
+                    Form.ActiveForm.Close();
+                }
             }
         }
 
@@ -105,25 +117,25 @@ namespace WindowsFormsApp1
 
             if (txtNom.Text == "")
             {
-                erreur += "\u25C9\tNom Compositeur vide\n";
+                erreur += "\u25C9\tVeuillez renseigner le nom.\n";
                 vretour = false;
             }
 
             if(txtPrenom.Text == "")
             {
-                erreur += "\u25C9\tPrénom Compositeur vide\n";
+                erreur += "\u25C9\tVeuillez renseigner le prénom.\n";
                 vretour = false;
             }
 
             if(txtRemarque.Text == "")
             {
-                erreur += "\u25C9\tRemarque Compositeur vide\n";
+                erreur += "\u25C9\tVeuillez renseigner une remarque\n";
                 vretour = false;
             }
 
             if(txtAnNais.Text == "")
             {
-                erreur += "\u25C9\tAnnée naissance Compositeur vide\n";
+                erreur += "\u25C9\tVeuillez renseigner une année de naissance.\n";
                 vretour = false;
             }
             else
@@ -132,13 +144,13 @@ namespace WindowsFormsApp1
                 {
                     if (int.Parse(txtAnNais.Text) < 500)
                     {
-                        erreur += "\u25C9\tAnnée naissance Compositeur incompatible\n";
+                        erreur += "\u25C9\tL'année de naissance doit au minimum dater de 500 après J-C.\n";
                         vretour = false;
                     }
 
                     if (int.Parse(txtAnNais.Text) > annee_sub15)
                     {
-                        erreur += "\u25C9\tAnnée naissance Compositeur incompatible\n";
+                        erreur += "\u25C9\tL'année de naissance doit dater d'il y a 15 ans au minimum.\n";
                         vretour = false;
                     }
                 }
@@ -155,19 +167,19 @@ namespace WindowsFormsApp1
                 {
                     if (int.Parse(txtAnMort.Text) < int.Parse(txtAnNais.Text) + 15)
                     {
-                        erreur += "\u25C9\tAnnée mort Compositeur incompatible 15\n";
+                        erreur += "\u25C9\tL'année de mort doit être au minimum 15 ans après la naissance.\n";
                         vretour = false;
                     }
 
                     if (int.Parse(txtAnMort.Text) > int.Parse(txtAnNais.Text) + 125)
                     {
-                        erreur += "\u25C9\tAnnée mort Compositeur incompatible 125\n";
+                        erreur += "\u25C9\tL'année de mort doit être au maximum 125 ans après la naissance.\n";
                         vretour = false;
                     }
 
                     if (int.Parse(txtAnMort.Text) > annee_actuelle)
                     {
-                        erreur += "\u25C9\tAnnée mort Compositeur incompatible\n";
+                        erreur += "\u25C9\tVous prévoyez la mort vous ?\n";
                         vretour = false;
                     }
                 }
@@ -178,6 +190,21 @@ namespace WindowsFormsApp1
             }
 
             return vretour;
+        }
+
+        private void FAjoutModifCompositeur_Shown(object sender, EventArgs e)
+        {
+            if(Modele.ActionGestionCompositeur == 2 && Modele.CompositeurChoisi != null)
+            {
+                this.txtNom.Text = Modele.CompositeurChoisi.nomCompositeur;
+                this.txtPrenom.Text = Modele.CompositeurChoisi.prenomCompositeur;
+                this.txtAnNais.Text = Modele.CompositeurChoisi.anNais.ToString();
+                this.txtRemarque.Text = Modele.CompositeurChoisi.remarque;
+                this.txtAnMort.Text = Modele.CompositeurChoisi.anMort.ToString();
+                this.cboNation.Text = Modele.CompositeurChoisi.NATIONALITE.libNation.ToString();
+                this.cboStyle.Text = Modele.CompositeurChoisi.STYLE.libStyle.ToString();
+            }
+
         }
     }
 }

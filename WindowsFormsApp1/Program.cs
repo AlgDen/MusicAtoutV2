@@ -19,7 +19,7 @@ namespace WindowsFormsApp1
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Modele.init();
-            Application.Run(new FMenu());
+            Application.Run(new FConnex());
 
         }
     }
